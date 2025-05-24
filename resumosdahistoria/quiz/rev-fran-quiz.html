@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz – Revolução Russa</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .quiz-container {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 600px;
+      width: 100%;
+    }
+    .question {
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .options button {
+      display: block;
+      width: 100%;
+      margin: 0.5rem 0;
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f9f9f9;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .options button.correct {
+      background-color: #d4edda;
+      border-color: #28a745;
+    }
+    .options button.incorrect {
+      background-color: #f8d7da;
+      border-color: #dc3545;
+    }
+    .feedback {
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .next-btn {
+      margin-top: 1rem;
+      padding: 0.7rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      display: none;
+    }
+    .score {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="quiz-container">
+  <div id="quiz">
+    <div class="question" id="question">Carregando pergunta...</div>
+    <div class="options" id="options"></div>
+    <div class="feedback" id="feedback"></div>
+    <button class="next-btn" id="next">Próxima</button>
+    <div class="score" id="score"></div>
+  </div>
+</div>
+
+<script>
+const perguntas = [
+  {
+    pergunta: "Quem liderou a Revolução de Outubro de 1917?",
+    opcoes: ["Trotsky", "Lenin", "Stalin", "Nicolau II", "Kerensky"],
+    correta: 1,
+    explicacao: "Lenin liderou os bolcheviques na Revolução de Outubro, instaurando o regime socialista."
+  },
+  {
+    pergunta: "O que foi o Comunismo de Guerra?",
+    opcoes: [
+      "Uma política de aliança entre partidos",
+      "Repressão à nobreza russa",
+      "Política econômica bolchevique durante a guerra civil",
+      "Nome da primeira Constituição Soviética",
+      "Acordo de paz com a Alemanha"
+    ],
+    correta: 2,
+    explicacao: "O Comunismo de Guerra foi a política de emergência usada durante a Guerra Civil para sustentar o Exército Vermelho."
+  },
+  {
+    pergunta: "Qual foi o tratado que retirou a Rússia da Primeira Guerra Mundial?",
+    opcoes: [
+      "Tratado de Versalhes",
+      "Tratado de Brest-Litovski",
+      "Pacto de Varsóvia",
+      "Tratado de Munique",
+      "Acordo de Ialta"
+    ],
+    correta: 1,
+    explicacao: "O Tratado de Brest-Litovski foi assinado entre a Rússia e a Alemanha, retirando os soviéticos da guerra."
+  }
+];
+
+let indiceAtual = 0;
+let acertos = 0;
+
+function carregarPergunta() {
+  const q = perguntas[indiceAtual];
+  document.getElementById('question').textContent = q.pergunta;
+  document.getElementById('options').innerHTML = '';
+  document.getElementById('feedback').textContent = '';
+  document.getElementById('next').style.display = 'none';
+
+  q.opcoes.forEach((op, index) => {
+    const btn = document.createElement('button');
+    btn.textContent = op;
+    btn.onclick = () => verificarResposta(index);
+    document.getElementById('options').appendChild(btn);
+  });
+}
+
+function verificarResposta(escolhida) {
+  const q = perguntas[indiceAtual];
+  const botoes = document.querySelectorAll('#options button');
+
+  botoes.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === q.correta) {
+      btn.classList.add('correct');
+    }
+    if (idx === escolhida && idx !== q.correta) {
+      btn.classList.add('incorrect');
+    }
+  });
+
+  const acertou = escolhida === q.correta;
+  if (acertou) acertos++;
+  document.getElementById('feedback').textContent = acertou
+    ? '✅ Resposta correta! ' + q.explicacao
+    : '❌ Resposta errada. ' + q.explicacao;
+
+  document.getElementById('next').style.display = 'block';
+}
+
+document.getElementById('next').onclick = () => {
+  indiceAtual++;
+  if (indiceAtual < perguntas.length) {
+    carregarPergunta();
+  } else {
+    document.getElementById('quiz').innerHTML = `
+      <div class="score">Você acertou ${acertos} de ${perguntas.length} questões.</div>
+    `;
+  }
+};
+
+carregarPergunta();
+</script>
+
+</body>
+</html>

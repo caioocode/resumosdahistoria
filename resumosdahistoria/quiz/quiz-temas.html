@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Escolher Tema do Quiz</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .container {
+      background-color: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      max-width: 400px;
+      width: 100%;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    select {
+      padding: 0.5rem;
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+    button {
+      padding: 0.7rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      margin: 0.5rem;
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Escolha um tema para testar seus conhecimentos:</h1>
+  <select id="tema-select">
+    <option value="">-- Selecione um tema --</option>
+    <option value="revolucao-russa">Revolução Russa</option>
+    <option value="era-vargas">Era Vargas</option>
+    <option value="revolucao-francesa">Revolução Francesa</option>
+    <!-- Adicione outros temas conforme necessário -->
+  </select>
+  <div>
+    <button onclick="iniciarQuiz()">Iniciar Quiz</button>
+    <button onclick="voltar()">Voltar</button>
+  </div>
+</div>
+
+<script>
+  function iniciarQuiz() {
+    const tema = document.getElementById("tema-select").value;
+    if (!tema) {
+      alert("Por favor, selecione um tema.");
+      return;
+    }
+    // Mapeamento de tema para a página HTML correspondente
+    const paginasQuiz = {
+      'revolucao-russa': 'rev-russa-quiz.html',
+      'era-vargas': 'era-vargas-quiz.html',
+      'revolucao-francesa': 'rev-fran-quiz.html'
+      // Adicione novos temas conforme necessário
+    };
+
+    window.location.href = paginasQuiz[tema] || '#';
+  }
+
+  function voltar() {
+    window.location.href = "quiz-temas.html"; // Altere para o nome real da sua página principal
+  }
+</script>
+
+</body>
+</html>
