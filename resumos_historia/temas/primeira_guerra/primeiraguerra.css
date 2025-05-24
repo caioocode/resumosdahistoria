@@ -28,8 +28,8 @@ body {
 
   .flip-card {
     background-color: transparent;
-    width: 280px;
-    height: 180px;
+    width: 350px;
+    height: 350px;
     perspective: 1000px;
     cursor: pointer;
   }
