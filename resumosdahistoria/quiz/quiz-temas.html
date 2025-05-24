@@ -15,6 +15,7 @@
       height: 100vh;
       margin: 0;
     }
+
     .container {
       background-color: white;
       padding: 2rem;
@@ -31,6 +32,7 @@
       padding: 0.5rem;
       width: 100%;
       margin-bottom: 1rem;
+      font-size: 1rem;
     }
     button {
       padding: 0.7rem 1rem;
@@ -40,6 +42,7 @@
       color: white;
       cursor: pointer;
       margin: 0.5rem;
+      font-size: 1rem;
     }
     button:hover {
       background-color: #0056b3;
@@ -55,6 +58,7 @@
     <option value="revolucao-russa">Revolução Russa</option>
     <option value="era-vargas">Era Vargas</option>
     <option value="revolucao-francesa">Revolução Francesa</option>
+    <option value="primeira-guerra-mundial">Primeira Guerra Mundial</option>
     <!-- Adicione outros temas conforme necessário -->
   </select>
   <div>
@@ -74,7 +78,8 @@
     const paginasQuiz = {
       'revolucao-russa': 'rev-russa-quiz.html',
       'era-vargas': 'era-vargas-quiz.html',
-      'revolucao-francesa': 'rev-fran-quiz.html'
+      'revolucao-francesa': 'rev-fran-quiz.html',
+      'primeira-guerra-mundial': 'prim-guerra-quiz.html', // Descomente se necessário
       // Adicione novos temas conforme necessário
     };
 
@@ -82,7 +87,7 @@
   }
 
   function voltar() {
-    window.location.href = "quiz-temas.html"; // Altere para o nome real da sua página principal
+    window.location.href = "../index.html"; // Altere para o nome real da sua página principal
   }
 </script>
 

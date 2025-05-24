@@ -22,10 +22,12 @@
       width: 100%;
     }
     .question {
-      font-size: 1.2rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
+      text-align: center;
     }
     .options button {
+      font-size: 1.5rem;
       display: block;
       width: 100%;
       margin: 0.5rem 0;
@@ -39,16 +41,20 @@
     .options button.correct {
       background-color: #d4edda;
       border-color: #28a745;
+      font-size: 1.5rem;
     }
     .options button.incorrect {
       background-color: #f8d7da;
       border-color: #dc3545;
+      font-size: 1.5rem;
     }
     .feedback {
       margin-top: 1rem;
       font-weight: bold;
+      font-size: 1.2rem;
     }
     .next-btn {
+      font-size: 1.5rem;
       margin-top: 1rem;
       padding: 0.7rem 1rem;
       background-color: #007bff;
@@ -58,8 +64,20 @@
       cursor: pointer;
       display: none;
     }
+
+    .back-btn {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      padding: 0.7rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
     .score {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       text-align: center;
       margin-top: 1rem;
     }
@@ -74,40 +92,41 @@
     <div class="feedback" id="feedback"></div>
     <button class="next-btn" id="next">Próxima</button>
     <div class="score" id="score"></div>
+    <button class="back-btn" onclick="voltar()">Voltar</button>
   </div>
 </div>
 
 <script>
 const perguntas = [
   {
-    pergunta: "Quem liderou a Revolução de Outubro de 1917?",
-    opcoes: ["Trotsky", "Lenin", "Stalin", "Nicolau II", "Kerensky"],
+    pergunta: "Quando teve início a Era Vargas?",
+    opcoes: ["1929", "1930", "1932", "1934", "1937"],
     correta: 1,
-    explicacao: "Lenin liderou os bolcheviques na Revolução de Outubro, instaurando o regime socialista."
+    explicacao: "A Era Vargas começou em 1930, com a Revolução de 1930 que levou Getúlio Vargas ao poder, encerrando a República Velha."
   },
   {
-    pergunta: "O que foi o Comunismo de Guerra?",
+    pergunta: "Qual evento marcou o fim da Era Vargas?",
     opcoes: [
-      "Uma política de aliança entre partidos",
-      "Repressão à nobreza russa",
-      "Política econômica bolchevique durante a guerra civil",
-      "Nome da primeira Constituição Soviética",
-      "Acordo de paz com a Alemanha"
+      "O golpe de 1964",
+      "A criação da CLT",
+      "O suicídio de Vargas",
+      "O fim do Estado Novo",
+      "A renúncia de Jânio Quadros"
     ],
     correta: 2,
-    explicacao: "O Comunismo de Guerra foi a política de emergência usada durante a Guerra Civil para sustentar o Exército Vermelho."
+    explicacao: "A Era Vargas terminou com o suicídio de Getúlio Vargas em 1954, durante seu segundo governo."
   },
   {
-    pergunta: "Qual foi o tratado que retirou a Rússia da Primeira Guerra Mundial?",
+    pergunta: "Qual foi o principal objetivo da Revolução de 1930?",
     opcoes: [
-      "Tratado de Versalhes",
-      "Tratado de Brest-Litovski",
-      "Pacto de Varsóvia",
-      "Tratado de Munique",
-      "Acordo de Ialta"
+      "Implantar o socialismo",
+      "Proteger o poder das oligarquias",
+      "Combater a inflação",
+      "Romper com a política do café com leite",
+      "Unificar o poder militar"
     ],
-    correta: 1,
-    explicacao: "O Tratado de Brest-Litovski foi assinado entre a Rússia e a Alemanha, retirando os soviéticos da guerra."
+    correta: 3,
+    explicacao: "A Revolução de 1930 visava romper com a política do café com leite e modernizar o Estado brasileiro."
   }
 ];
 
@@ -163,7 +182,13 @@ document.getElementById('next').onclick = () => {
   }
 };
 
+
+function voltar() {
+  window.location.href = "quiz-temas.html"; // Altere para o nome real da sua página principal
+}
+
 carregarPergunta();
+
 
 </script>
 

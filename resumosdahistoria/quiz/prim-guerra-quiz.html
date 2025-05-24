@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz – Revolução Russa</title>
+
   <style>
     body {
       font-family: sans-serif;
@@ -22,10 +23,12 @@
       width: 100%;
     }
     .question {
-      font-size: 1.2rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
+      text-align: center;
     }
     .options button {
+      font-size: 1.5rem;
       display: block;
       width: 100%;
       margin: 0.5rem 0;
@@ -39,16 +42,20 @@
     .options button.correct {
       background-color: #d4edda;
       border-color: #28a745;
+      font-size: 1.5rem;
     }
     .options button.incorrect {
       background-color: #f8d7da;
       border-color: #dc3545;
+      font-size: 1.5rem;
     }
     .feedback {
       margin-top: 1rem;
       font-weight: bold;
+      font-size: 1.2rem;
     }
     .next-btn {
+      font-size: 1.5rem;
       margin-top: 1rem;
       padding: 0.7rem 1rem;
       background-color: #007bff;
@@ -58,12 +65,25 @@
       cursor: pointer;
       display: none;
     }
+
+    .back-btn {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      padding: 0.7rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
     .score {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       text-align: center;
       margin-top: 1rem;
     }
   </style>
+
 </head>
 <body>
 
@@ -74,40 +94,41 @@
     <div class="feedback" id="feedback"></div>
     <button class="next-btn" id="next">Próxima</button>
     <div class="score" id="score"></div>
+    <button class="back-btn" onclick="voltar()">Voltar</button>
   </div>
 </div>
 
 <script>
 const perguntas = [
   {
-    pergunta: "Quem liderou a Revolução de Outubro de 1917?",
-    opcoes: ["Trotsky", "Lenin", "Stalin", "Nicolau II", "Kerensky"],
-    correta: 1,
-    explicacao: "Lenin liderou os bolcheviques na Revolução de Outubro, instaurando o regime socialista."
-  },
-  {
-    pergunta: "O que foi o Comunismo de Guerra?",
-    opcoes: [
-      "Uma política de aliança entre partidos",
-      "Repressão à nobreza russa",
-      "Política econômica bolchevique durante a guerra civil",
-      "Nome da primeira Constituição Soviética",
-      "Acordo de paz com a Alemanha"
-    ],
+    pergunta: "Qual foi o estopim da Primeira Guerra Mundial?",
+    opcoes: ["A invasão da Polônia pela Alemanha", "A Revolução Russa", "O assassinato do arquiduque Francisco Ferdinando", "O ataque a Pearl Harbor", "A criação da Liga das Nações"],
     correta: 2,
-    explicacao: "O Comunismo de Guerra foi a política de emergência usada durante a Guerra Civil para sustentar o Exército Vermelho."
+    explicacao: "O assassinato do arquiduque austro-húngaro Francisco Ferdinando, em Sarajevo (1914), desencadeou uma série de alianças militares e conflitos que deram início à Primeira Guerra Mundial."
   },
   {
-    pergunta: "Qual foi o tratado que retirou a Rússia da Primeira Guerra Mundial?",
+    pergunta: "Qual das opções abaixo NÃO foi uma causa da Primeira Guerra Mundial?",
     opcoes: [
-      "Tratado de Versalhes",
-      "Tratado de Brest-Litovski",
-      "Pacto de Varsóvia",
-      "Tratado de Munique",
-      "Acordo de Ialta"
+      "Nacionalismo exacerbado",
+      "Imperialismo europeu",
+      "Alianças militares",
+      "Crise dos mísseis em Cuba",
+      "Corrida armamentista"
+    ],
+    correta: 3,
+    explicacao: " A Crise dos Mísseis em Cuba ocorreu em 1962, durante a Guerra Fria, e não teve relação com a Primeira Guerra Mundial."
+  },
+  {
+    pergunta: "Quais países faziam parte da Tríplice Entente?",
+    opcoes: [
+      "Alemanha, Áustria-Hungria e Itália",
+      "França, Reino Unido e Rússia",
+      "Alemanha, Itália e Rússia",
+      "Reino Unido, Alemanha e Áustria",
+      "França, Alemanha e Japão"
     ],
     correta: 1,
-    explicacao: "O Tratado de Brest-Litovski foi assinado entre a Rússia e a Alemanha, retirando os soviéticos da guerra."
+    explicacao: "A Tríplice Entente era formada por França, Reino Unido e Rússia — um dos blocos rivais da Tríplice Aliança (Alemanha, Áustria-Hungria e Itália)."
   }
 ];
 
@@ -163,7 +184,12 @@ document.getElementById('next').onclick = () => {
   }
 };
 
+function voltar() {
+  window.location.href = "quiz-temas.html"; // Altere para o nome real da sua página principal
+}
+
 carregarPergunta();
+
 </script>
 
 </body>

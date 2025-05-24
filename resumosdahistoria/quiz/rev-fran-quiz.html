@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz – Revolução Russa</title>
+  
   <style>
     body {
       font-family: sans-serif;
@@ -22,10 +23,12 @@
       width: 100%;
     }
     .question {
-      font-size: 1.2rem;
+      font-size: 2rem;
       margin-bottom: 1rem;
+      text-align: center;
     }
     .options button {
+      font-size: 1.5rem;
       display: block;
       width: 100%;
       margin: 0.5rem 0;
@@ -39,16 +42,20 @@
     .options button.correct {
       background-color: #d4edda;
       border-color: #28a745;
+      font-size: 1.5rem;
     }
     .options button.incorrect {
       background-color: #f8d7da;
       border-color: #dc3545;
+      font-size: 1.5rem;
     }
     .feedback {
       margin-top: 1rem;
       font-weight: bold;
+      font-size: 1.2rem;
     }
     .next-btn {
+      font-size: 1.5rem;
       margin-top: 1rem;
       padding: 0.7rem 1rem;
       background-color: #007bff;
@@ -58,12 +65,25 @@
       cursor: pointer;
       display: none;
     }
+
+    .back-btn {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      padding: 0.7rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
     .score {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       text-align: center;
       margin-top: 1rem;
     }
   </style>
+
 </head>
 <body>
 
@@ -74,40 +94,41 @@
     <div class="feedback" id="feedback"></div>
     <button class="next-btn" id="next">Próxima</button>
     <div class="score" id="score"></div>
+    <button class="back-btn" onclick="voltar()">Voltar</button>
   </div>
 </div>
 
 <script>
 const perguntas = [
   {
-    pergunta: "Quem liderou a Revolução de Outubro de 1917?",
-    opcoes: ["Trotsky", "Lenin", "Stalin", "Nicolau II", "Kerensky"],
+    pergunta: "Qual foi uma das principais causas da Revolução Francesa?",
+    opcoes: ["A descoberta da América", "A crise financeira e os privilégios da nobreza", "A derrota na Primeira Guerra Mundial", "A invasão napoleônica da Rússia", "A criação da União Europeia"],
     correta: 1,
-    explicacao: "Lenin liderou os bolcheviques na Revolução de Outubro, instaurando o regime socialista."
+    explicacao:"📝 Explicação:A Revolução Francesa teve como causas principais a crise econômica, os altos impostos pagos pelo Terceiro Estado, e os privilégios da nobreza e do clero, que não pagavam impostos."
   },
   {
-    pergunta: "O que foi o Comunismo de Guerra?",
+    pergunta: "O que foi a Tomada da Bastilha, em 14 de julho de 1789?",
     opcoes: [
-      "Uma política de aliança entre partidos",
-      "Repressão à nobreza russa",
-      "Política econômica bolchevique durante a guerra civil",
-      "Nome da primeira Constituição Soviética",
-      "Acordo de paz com a Alemanha"
+      "Um acordo entre o rei e o povo",
+      "Um tratado de paz com a Prússia",
+      "Um ato simbólico de resistência ao absolutismo",
+      "A fuga da família real para a Áustria",
+      "A coroação de Napoleão Bonaparte"
     ],
     correta: 2,
-    explicacao: "O Comunismo de Guerra foi a política de emergência usada durante a Guerra Civil para sustentar o Exército Vermelho."
+    explicacao: "📝 Explicação: A Bastilha era uma prisão que simbolizava o poder absoluto do rei. Sua tomada pelo povo marcou o início da Revolução e é celebrada até hoje como o Dia da Bastilha."
   },
   {
-    pergunta: "Qual foi o tratado que retirou a Rússia da Primeira Guerra Mundial?",
+    pergunta: "Qual classe social liderou os primeiros momentos da Revolução Francesa?",
     opcoes: [
-      "Tratado de Versalhes",
-      "Tratado de Brest-Litovski",
-      "Pacto de Varsóvia",
-      "Tratado de Munique",
-      "Acordo de Ialta"
+      "A nobreza",
+      "O clero",
+      "Os camponeses",
+      "A burguesia",
+      "Os militares"
     ],
-    correta: 1,
-    explicacao: "O Tratado de Brest-Litovski foi assinado entre a Rússia e a Alemanha, retirando os soviéticos da guerra."
+    correta: 3,
+    explicacao: "📝 Explicação:A burguesia, parte do Terceiro Estado, liderou os primeiros momentos da Revolução, reivindicando participação política e o fim dos privilégios dos estamentos superiores."
   }
 ];
 
@@ -162,6 +183,10 @@ document.getElementById('next').onclick = () => {
     `;
   }
 };
+
+function voltar() {
+  window.location.href = "quiz-temas.html"; // Altere para o nome real da sua página principal
+}
 
 carregarPergunta();
 </script>
