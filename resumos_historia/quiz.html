@@ -1,0 +1,94 @@
+<!-- quiz.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <main>
+    <h1 id="titulo-quiz"></h1>
+    <div id="quiz-container"></div>
+    <button id="ver-gabarito" style="display: none">Ver Gabarito</button>
+    <div id="gabarito"></div>
+  </main>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const tema = urlParams.get('tema');
+
+    const temas = {
+      'revolucao-francesa': 'Revolução Francesa',
+      'revolucao-industrial': 'Revolução Industrial',
+      'brasil-colonia': 'Brasil Colônia',
+      'primeira-republica': 'Primeira República',
+      'segunda-guerra': 'Segunda Guerra Mundial'
+    };
+
+    const quizData = {
+      'revolucao-francesa': [
+        {
+          pergunta: "Qual foi uma das causas principais da Revolução Francesa?",
+          opcoes: ["Industrialização", "Desigualdade social", "Conquista da América", "Unificação Alemã"],
+          resposta: "Desigualdade social",
+          explicacao: "A sociedade francesa era dividida em estamentos com grandes desigualdades."
+        },
+        {
+          pergunta: "Quem liderou a fase mais radical da revolução?",
+          opcoes: ["Robespierre", "Napoleão", "Voltaire", "Luís XVI"],
+          resposta: "Robespierre",
+          explicacao: "Robespierre liderou o período conhecido como o Terror."
+        }
+      ]
+      // Adicione mais temas aqui
+    };
+
+    const titulo = temas[tema] || 'Quiz';
+    document.getElementById('titulo-quiz').textContent = `Quiz: ${titulo}`;
+
+    const perguntas = quizData[tema];
+    const container = document.getElementById('quiz-container');
+    const gabaritoBtn = document.getElementById('ver-gabarito');
+    const gabaritoDiv = document.getElementById('gabarito');
+
+    if (perguntas) {
+      perguntas.forEach((q, index) => {
+        const div = document.createElement('div');
+        div.classList.add('pergunta');
+        div.innerHTML = `<p><strong>${index + 1}. ${q.pergunta}</strong></p>`;
+
+        q.opcoes.forEach(opcao => {
+          const id = `q${index}-${opcao}`;
+          div.innerHTML += `
+            <label for="${id}">
+              <input type="radio" name="q${index}" value="${opcao}" id="${id}" /> ${opcao}
+            </label><br>`;
+        });
+
+        container.appendChild(div);
+      });
+
+      gabaritoBtn.style.display = 'block';
+    } else {
+      container.innerHTML = '<p>Quiz não disponível para este tema.</p>';
+    }
+
+    gabaritoBtn.addEventListener('click', () => {
+      gabaritoDiv.innerHTML = '<h2>Gabarito:</h2>';
+      perguntas.forEach((q, index) => {
+        const resposta = document.querySelector(`input[name='q${index}']:checked`);
+        const valor = resposta ? resposta.value : 'Nenhuma resposta';
+        const correta = valor === q.resposta;
+        gabaritoDiv.innerHTML += `
+          <p><strong>${index + 1}.</strong> ${q.pergunta}<br>
+          Sua resposta: <em>${valor}</em><br>
+          Correta: <strong>${q.resposta}</strong><br>
+          Explicação: ${q.explicacao}</p>
+          <hr>`;
+      });
+    });
+  </script>
+</body>
+</html>
