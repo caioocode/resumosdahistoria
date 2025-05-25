@@ -77,6 +77,17 @@
       cursor: pointer;
     }
 
+    .btn-voltar {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      padding: 0.7rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
     .score {
       font-size: 1.5rem;
       text-align: center;
@@ -95,40 +106,41 @@
     <button class="next-btn" id="next">Próxima</button>
     <div class="score" id="score"></div>
     <button class="back-btn" onclick="voltar()">Voltar</button>
+
   </div>
 </div>
 
 <script>
 const perguntas = [
   {
-    pergunta: "Qual foi o estopim da Primeira Guerra Mundial?",
-    opcoes: ["A invasão da Polônia pela Alemanha", "A Revolução Russa", "O assassinato do arquiduque Francisco Ferdinando", "O ataque a Pearl Harbor", "A criação da Liga das Nações"],
-    correta: 2,
-    explicacao: "O assassinato do arquiduque austro-húngaro Francisco Ferdinando, em Sarajevo (1914), desencadeou uma série de alianças militares e conflitos que deram início à Primeira Guerra Mundial."
+    pergunta: "Quem liderou a Revolução de Outubro de 1917?",
+    opcoes: ["Trotsky", "Lenin", "Stalin", "Nicolau II", "Kerensky"],
+    correta: 1,
+    explicacao: "Lenin liderou os bolcheviques na Revolução de Outubro, instaurando o regime socialista."
   },
   {
-    pergunta: "Qual das opções abaixo NÃO foi uma causa da Primeira Guerra Mundial?",
+    pergunta: "O que foi o Comunismo de Guerra?",
     opcoes: [
-      "Nacionalismo exacerbado",
-      "Imperialismo europeu",
-      "Alianças militares",
-      "Crise dos mísseis em Cuba",
-      "Corrida armamentista"
+      "Uma política de aliança entre partidos",
+      "Repressão à nobreza russa",
+      "Política econômica bolchevique durante a guerra civil",
+      "Nome da primeira Constituição Soviética",
+      "Acordo de paz com a Alemanha"
     ],
-    correta: 3,
-    explicacao: " A Crise dos Mísseis em Cuba ocorreu em 1962, durante a Guerra Fria, e não teve relação com a Primeira Guerra Mundial."
+    correta: 2,
+    explicacao: "O Comunismo de Guerra foi a política de emergência usada durante a Guerra Civil para sustentar o Exército Vermelho."
   },
   {
-    pergunta: "Quais países faziam parte da Tríplice Entente?",
+    pergunta: "Qual foi o tratado que retirou a Rússia da Primeira Guerra Mundial?",
     opcoes: [
-      "Alemanha, Áustria-Hungria e Itália",
-      "França, Reino Unido e Rússia",
-      "Alemanha, Itália e Rússia",
-      "Reino Unido, Alemanha e Áustria",
-      "França, Alemanha e Japão"
+      "Tratado de Versalhes",
+      "Tratado de Brest-Litovski",
+      "Pacto de Varsóvia",
+      "Tratado de Munique",
+      "Acordo de Ialta"
     ],
     correta: 1,
-    explicacao: "A Tríplice Entente era formada por França, Reino Unido e Rússia — um dos blocos rivais da Tríplice Aliança (Alemanha, Áustria-Hungria e Itália)."
+    explicacao: "O Tratado de Brest-Litovski foi assinado entre a Rússia e a Alemanha, retirando os soviéticos da guerra."
   }
 ];
 
@@ -180,6 +192,7 @@ document.getElementById('next').onclick = () => {
   } else {
     document.getElementById('quiz').innerHTML = `
       <div class="score">Você acertou ${acertos} de ${perguntas.length} questões.</div>
+      <button onclick="voltarPaginaInicial()" class="btn-voltar">Voltar para a página inicial</button>
     `;
   }
 };
@@ -189,7 +202,6 @@ function voltar() {
 }
 
 carregarPergunta();
-
 </script>
 
 </body>

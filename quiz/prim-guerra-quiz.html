@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz – Era Vargas</title>
+  <title>Quiz – Revolução Russa</title>
+
   <style>
     body {
       font-family: sans-serif;
@@ -76,12 +77,25 @@
       cursor: pointer;
     }
 
+    .btn-voltar {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      padding: 0.7rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+    }
+
     .score {
       font-size: 1.5rem;
       text-align: center;
       margin-top: 1rem;
     }
   </style>
+
 </head>
 <body>
 
@@ -99,34 +113,34 @@
 <script>
 const perguntas = [
   {
-    pergunta: "Quando teve início a Era Vargas?",
-    opcoes: ["1929", "1930", "1932", "1934", "1937"],
-    correta: 1,
-    explicacao: "A Era Vargas começou em 1930, com a Revolução de 1930 que levou Getúlio Vargas ao poder, encerrando a República Velha."
-  },
-  {
-    pergunta: "Qual evento marcou o fim da Era Vargas?",
-    opcoes: [
-      "O golpe de 1964",
-      "A criação da CLT",
-      "O suicídio de Vargas",
-      "O fim do Estado Novo",
-      "A renúncia de Jânio Quadros"
-    ],
+    pergunta: "Qual foi o estopim da Primeira Guerra Mundial?",
+    opcoes: ["A invasão da Polônia pela Alemanha", "A Revolução Russa", "O assassinato do arquiduque Francisco Ferdinando", "O ataque a Pearl Harbor", "A criação da Liga das Nações"],
     correta: 2,
-    explicacao: "A Era Vargas terminou com o suicídio de Getúlio Vargas em 1954, durante seu segundo governo."
+    explicacao: "O assassinato do arquiduque austro-húngaro Francisco Ferdinando, em Sarajevo (1914), desencadeou uma série de alianças militares e conflitos que deram início à Primeira Guerra Mundial."
   },
   {
-    pergunta: "Qual foi o principal objetivo da Revolução de 1930?",
+    pergunta: "Qual das opções abaixo NÃO foi uma causa da Primeira Guerra Mundial?",
     opcoes: [
-      "Implantar o socialismo",
-      "Proteger o poder das oligarquias",
-      "Combater a inflação",
-      "Romper com a política do café com leite",
-      "Unificar o poder militar"
+      "Nacionalismo exacerbado",
+      "Imperialismo europeu",
+      "Alianças militares",
+      "Crise dos mísseis em Cuba",
+      "Corrida armamentista"
     ],
     correta: 3,
-    explicacao: "A Revolução de 1930 visava romper com a política do café com leite e modernizar o Estado brasileiro."
+    explicacao: " A Crise dos Mísseis em Cuba ocorreu em 1962, durante a Guerra Fria, e não teve relação com a Primeira Guerra Mundial."
+  },
+  {
+    pergunta: "Quais países faziam parte da Tríplice Entente?",
+    opcoes: [
+      "Alemanha, Áustria-Hungria e Itália",
+      "França, Reino Unido e Rússia",
+      "Alemanha, Itália e Rússia",
+      "Reino Unido, Alemanha e Áustria",
+      "França, Alemanha e Japão"
+    ],
+    correta: 1,
+    explicacao: "A Tríplice Entente era formada por França, Reino Unido e Rússia — um dos blocos rivais da Tríplice Aliança (Alemanha, Áustria-Hungria e Itália)."
   }
 ];
 
@@ -178,17 +192,16 @@ document.getElementById('next').onclick = () => {
   } else {
     document.getElementById('quiz').innerHTML = `
       <div class="score">Você acertou ${acertos} de ${perguntas.length} questões.</div>
+      <button onclick="voltarPaginaInicial()" class="btn-voltar">Voltar para a página inicial</button>
     `;
   }
 };
-
 
 function voltar() {
   window.location.href = "quiz-temas.html"; // Altere para o nome real da sua página principal
 }
 
 carregarPergunta();
-
 
 </script>
 

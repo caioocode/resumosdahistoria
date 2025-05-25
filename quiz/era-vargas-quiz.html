@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz – Revolução Russa</title>
-  
+  <title>Quiz – Era Vargas</title>
   <style>
     body {
       font-family: sans-serif;
@@ -77,13 +76,24 @@
       cursor: pointer;
     }
 
+  .btn-voltar {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      padding: 0.7rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: center;
+  }
+
     .score {
       font-size: 1.5rem;
       text-align: center;
       margin-top: 1rem;
     }
   </style>
-
 </head>
 <body>
 
@@ -101,34 +111,34 @@
 <script>
 const perguntas = [
   {
-    pergunta: "Qual foi uma das principais causas da Revolução Francesa?",
-    opcoes: ["A descoberta da América", "A crise financeira e os privilégios da nobreza", "A derrota na Primeira Guerra Mundial", "A invasão napoleônica da Rússia", "A criação da União Europeia"],
+    pergunta: "Quando teve início a Era Vargas?",
+    opcoes: ["1929", "1930", "1932", "1934", "1937"],
     correta: 1,
-    explicacao:"📝 Explicação:A Revolução Francesa teve como causas principais a crise econômica, os altos impostos pagos pelo Terceiro Estado, e os privilégios da nobreza e do clero, que não pagavam impostos."
+    explicacao: "A Era Vargas começou em 1930, com a Revolução de 1930 que levou Getúlio Vargas ao poder, encerrando a República Velha."
   },
   {
-    pergunta: "O que foi a Tomada da Bastilha, em 14 de julho de 1789?",
+    pergunta: "Qual evento marcou o fim da Era Vargas?",
     opcoes: [
-      "Um acordo entre o rei e o povo",
-      "Um tratado de paz com a Prússia",
-      "Um ato simbólico de resistência ao absolutismo",
-      "A fuga da família real para a Áustria",
-      "A coroação de Napoleão Bonaparte"
+      "O golpe de 1964",
+      "A criação da CLT",
+      "O suicídio de Vargas",
+      "O fim do Estado Novo",
+      "A renúncia de Jânio Quadros"
     ],
     correta: 2,
-    explicacao: "📝 Explicação: A Bastilha era uma prisão que simbolizava o poder absoluto do rei. Sua tomada pelo povo marcou o início da Revolução e é celebrada até hoje como o Dia da Bastilha."
+    explicacao: "A Era Vargas terminou com o suicídio de Getúlio Vargas em 1954, durante seu segundo governo."
   },
   {
-    pergunta: "Qual classe social liderou os primeiros momentos da Revolução Francesa?",
+    pergunta: "Qual foi o principal objetivo da Revolução de 1930?",
     opcoes: [
-      "A nobreza",
-      "O clero",
-      "Os camponeses",
-      "A burguesia",
-      "Os militares"
+      "Implantar o socialismo",
+      "Proteger o poder das oligarquias",
+      "Combater a inflação",
+      "Romper com a política do café com leite",
+      "Unificar o poder militar"
     ],
     correta: 3,
-    explicacao: "📝 Explicação:A burguesia, parte do Terceiro Estado, liderou os primeiros momentos da Revolução, reivindicando participação política e o fim dos privilégios dos estamentos superiores."
+    explicacao: "A Revolução de 1930 visava romper com a política do café com leite e modernizar o Estado brasileiro."
   }
 ];
 
@@ -180,15 +190,19 @@ document.getElementById('next').onclick = () => {
   } else {
     document.getElementById('quiz').innerHTML = `
       <div class="score">Você acertou ${acertos} de ${perguntas.length} questões.</div>
+      <button onclick="voltarPaginaInicial()" class="btn-voltar">Voltar para a página inicial</button>
     `;
   }
 };
 
-function voltar() {
+
+function voltarPaginaInicial() {
   window.location.href = "quiz-temas.html"; // Altere para o nome real da sua página principal
 }
 
 carregarPergunta();
+
+
 </script>
 
 </body>
